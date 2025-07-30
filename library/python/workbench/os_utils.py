@@ -20,6 +20,7 @@
 # along with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
+import locale
 import os
 import sys
 import ctypes
@@ -354,7 +355,7 @@ class OSUtils(object):
             # Note that self._command contains the internal command so EXEC
             # and self._args is the real OS command to be executed
             # Executes the command, reading the output from the PIPE
-            process = subprocess.Popen(command, stdin = subprocess.PIPE, encoding="utf-8", stdout = subprocess.PIPE, stderr = subprocess.STDOUT, shell=True)
+            process = subprocess.Popen(command, stdin = subprocess.PIPE, encoding = locale.getencoding(), stdout = subprocess.PIPE, stderr = subprocess.STDOUT, shell=True)
 
             # Sends all the command output to the listener
             if output_handler:
